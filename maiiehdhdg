@@ -1,45 +1,9 @@
-import os
-import asyncio
-import nest_asyncio
-import requests
-from telegram import Update
-from telegram.ext import ApplicationBuilder, ContextTypes, MessageHandler, filters
-from flask import Flask
-from threading import Thread
-
-# Render-এর জন্য Flask সার্ভার (এটি বটকে ২৪ ঘণ্টা চালু রাখবে)
-app = Flask('')
-
-@app.route('/')
-def home():
-    return "নূর AI সচল আছে! ✨"
-
-def run_flask():
-    # Render-এর দেওয়া Port ব্যবহার করবে
-    app.run(host='0.0.0.0', port=int(os.environ.get("PORT", 8080)))
-
-# তোর দেওয়া বটের কনফিগারেশন
-TELEGRAM_TOKEN = "8097916754:AAE0OxXnzp72pSl9uj4bejdBbnsxBhTulMs"
-OPENROUTER_API_KEY = "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"
-
-async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    user_input = update.message.text.strip()
-    headers = {
-        "Authorization": f"Bearer {OPENROUTER_API_KEY}",
-        "Content-Type": "application/json"
-    }
-
-    # ছোট মেসেজের জন্য কম টোকেন, বড় উত্তরের জন্য বেশি টোকেন
-    if user_input.lower() in ['ঠিক আছে', 'এখন না', 'পরে', 'ok'] or \
-       any(word in user_input.lower() for word in ['hello','hi','hey']):
-        max_tokens = 150
-    else:
         max_tokens = 500
 
     data = {
         "model": "openai/gpt-4o",
         "max_tokens": max_tokens,
-        "messages": [
+        ndjsjazbs sh"messages": [
             {
                 "role": "system",
                 "content": (
