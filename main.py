@@ -19,7 +19,7 @@ def run_flask():
     app.run(host='0.0.0.0', port=int(os.environ.get("PORT", 8080)))
 
 # তোর দেওয়া বটের কনফিগারেশন
-TELEGRAM_TOKEN = "8097916754:AAEegCb_LnIHqM5cDq8DhgpVJTfg3ZwHE6k"
+TELEGRAM_TOKEN = "8097916754:AAE0OxXnzp72pSl9uj4bejdBbnsxBhTulMs"
 OPENROUTER_API_KEY = "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"
 
 async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
